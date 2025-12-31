@@ -25,11 +25,11 @@ void create_screen_main() {
         {
             lv_obj_t *obj = lv_label_create(parent_obj);
             objects.obj0 = obj;
-            lv_obj_set_pos(obj, 329, 40);
+            lv_obj_set_pos(obj, 213, 49);
             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
             lv_obj_set_style_text_color(obj, lv_color_hex(0xffce2929), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_text_font(obj, &lv_font_montserrat_26, LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_label_set_text(obj, "Project DC");
+            lv_label_set_text(obj, "Welcome to my Home Page");
         }
         {
             // Main00Btn
@@ -147,12 +147,87 @@ void create_screen_screen00() {
 void tick_screen_screen00() {
 }
 
+void create_screen_screen01() {
+    lv_obj_t *obj = lv_obj_create(0);
+    objects.screen01 = obj;
+    lv_obj_set_pos(obj, 0, 0);
+    lv_obj_set_size(obj, 800, 480);
+    lv_obj_set_style_bg_color(obj, lv_color_hex(0xffe1b3b3), LV_PART_MAIN | LV_STATE_DEFAULT);
+    {
+        lv_obj_t *parent_obj = obj;
+        {
+            lv_obj_t *obj = lv_label_create(parent_obj);
+            objects.obj3 = obj;
+            lv_obj_set_pos(obj, 293, 56);
+            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+            lv_obj_set_style_text_color(obj, lv_color_hex(0xff834c10), LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_34, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_label_set_text(obj, "Dulitha Page");
+        }
+        {
+            // Screen01ArcPwm
+            lv_obj_t *obj = lv_arc_create(parent_obj);
+            objects.screen01_arc_pwm = obj;
+            lv_obj_set_pos(obj, 293, 140);
+            lv_obj_set_size(obj, 258, 259);
+            lv_arc_set_value(obj, 25);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_RELEASED, (void *)0);
+        }
+        {
+            // Screen00BtnBack_1
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.screen00_btn_back_1 = obj;
+            lv_obj_set_pos(obj, 101, 370);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff1a415f), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Back");
+                }
+            }
+        }
+        {
+            // Screen00BtnNext_1
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.screen00_btn_next_1 = obj;
+            lv_obj_set_pos(obj, 609, 374);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff1a415f), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Next");
+                }
+            }
+        }
+    }
+    
+    tick_screen_screen01();
+}
+
+void tick_screen_screen01() {
+}
+
 
 
 typedef void (*tick_screen_func_t)();
 tick_screen_func_t tick_screen_funcs[] = {
     tick_screen_main,
     tick_screen_screen00,
+    tick_screen_screen01,
 };
 void tick_screen(int screen_index) {
     tick_screen_funcs[screen_index]();
@@ -168,4 +243,5 @@ void create_screens() {
     
     create_screen_main();
     create_screen_screen00();
+    create_screen_screen01();
 }

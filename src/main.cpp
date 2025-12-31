@@ -121,6 +121,17 @@ void loop()
                 strip.fill(strip.Color(0, 0, 0)); // Off
             }
             // Add additional actions here
+         }else if(obj == objects.Screen00_btn_next) {
+            //Serial.println("Next Button on Screen 00 Pressed");
+            lv_scr_load(objects.screen01);  
+        }else if(obj == objects.screen01_btn_back_1) {
+            lv_scr_load(objects.screen00);
+         }else if(obj == objects.screen01_btn_next_1) {
+            // lv_scr_load(objects.main);
+         }else if(obj == objects.screen01_arc_pwm) {
+            int32_t angle = lv_arc_get_value(objects.screen01_arc_pwm);
+            Serial.printf("Arc PWM Value: %3d\n", angle);
+            lv_label_set_text(objects.screen01_label_pwm_value, "%d", angle);
          }
     }
 }
