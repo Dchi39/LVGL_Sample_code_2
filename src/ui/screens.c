@@ -19,13 +19,37 @@ void create_screen_main() {
     objects.main = obj;
     lv_obj_set_pos(obj, 0, 0);
     lv_obj_set_size(obj, 800, 480);
+    lv_obj_set_style_bg_color(obj, lv_color_hex(0xff33b6b2), LV_PART_MAIN | LV_STATE_DEFAULT);
     {
         lv_obj_t *parent_obj = obj;
         {
             lv_obj_t *obj = lv_label_create(parent_obj);
-            lv_obj_set_pos(obj, 356, 232);
+            objects.obj0 = obj;
+            lv_obj_set_pos(obj, 329, 40);
             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            lv_label_set_text(obj, "Hello, world!");
+            lv_obj_set_style_text_color(obj, lv_color_hex(0xffce2929), LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_26, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_label_set_text(obj, "Project DC");
+        }
+        {
+            // Main00Btn
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.main00_btn = obj;
+            lv_obj_set_pos(obj, 609, 374);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff1a415f), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Next");
+                }
+            }
         }
     }
     
@@ -35,11 +59,100 @@ void create_screen_main() {
 void tick_screen_main() {
 }
 
+void create_screen_screen00() {
+    lv_obj_t *obj = lv_obj_create(0);
+    objects.screen00 = obj;
+    lv_obj_set_pos(obj, 0, 0);
+    lv_obj_set_size(obj, 800, 480);
+    lv_obj_set_style_bg_color(obj, lv_color_hex(0xff309954), LV_PART_MAIN | LV_STATE_DEFAULT);
+    {
+        lv_obj_t *parent_obj = obj;
+        {
+            // Screen00BtnNext
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.screen00_btn_next = obj;
+            lv_obj_set_pos(obj, 609, 374);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff1a415f), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Next");
+                }
+            }
+        }
+        {
+            // Screen00BtnBack
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.screen00_btn_back = obj;
+            lv_obj_set_pos(obj, 106, 375);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff1a415f), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Back");
+                }
+            }
+        }
+        {
+            lv_obj_t *obj = lv_label_create(parent_obj);
+            objects.obj1 = obj;
+            lv_obj_set_pos(obj, 323, 58);
+            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+            lv_obj_set_style_text_color(obj, lv_color_hex(0xff834c10), LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_34, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_label_set_text(obj, "Screen Page");
+        }
+        {
+            // Screen00BtnLed
+            lv_obj_t *obj = lv_button_create(parent_obj);
+            objects.screen00_btn_led = obj;
+            lv_obj_set_pos(obj, 350, 200);
+            lv_obj_set_size(obj, 163, 83);
+            lv_obj_add_event_cb(obj, action_set_global_eez_event, LV_EVENT_CLICKED, (void *)0);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xff745a20), LV_PART_MAIN | LV_STATE_PRESSED);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_bg_color(obj, lv_color_hex(0xfff3b421), LV_PART_MAIN | LV_STATE_DEFAULT);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    objects.obj2 = obj;
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_obj_set_style_bg_color(obj, lv_color_hex(0xffffffff), LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "LED ON");
+                }
+            }
+        }
+    }
+    
+    tick_screen_screen00();
+}
+
+void tick_screen_screen00() {
+}
+
 
 
 typedef void (*tick_screen_func_t)();
 tick_screen_func_t tick_screen_funcs[] = {
     tick_screen_main,
+    tick_screen_screen00,
 };
 void tick_screen(int screen_index) {
     tick_screen_funcs[screen_index]();
@@ -54,4 +167,5 @@ void create_screens() {
     lv_disp_set_theme(dispp, theme);
     
     create_screen_main();
+    create_screen_screen00();
 }
