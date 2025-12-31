@@ -11,6 +11,8 @@ typedef struct _objects_t {
     lv_obj_t *main;
     lv_obj_t *screen00;
     lv_obj_t *screen01;
+    lv_obj_t *screen02;
+    lv_obj_t *screen03;
     lv_obj_t *obj0;
     lv_obj_t *main00_btn;
     lv_obj_t *screen00_btn_next;
@@ -20,8 +22,16 @@ typedef struct _objects_t {
     lv_obj_t *obj2;
     lv_obj_t *obj3;
     lv_obj_t *screen01_arc_pwm;
-    lv_obj_t *screen00_btn_back_1;
-    lv_obj_t *screen00_btn_next_1;
+    lv_obj_t *screen01_btn_back_1;
+    lv_obj_t *screen01_btn_next_1;
+    lv_obj_t *screen01_label_pwm;
+    lv_obj_t *obj4;
+    lv_obj_t *screen01_btn_back_2;
+    lv_obj_t *screen02_btn_next_2;
+    lv_obj_t *screen02_bar;
+    lv_obj_t *screen2_bar_val;
+    lv_obj_t *screen03_testarea;
+    lv_obj_t *screen03_keyboard;
 } objects_t;
 
 extern objects_t objects;
@@ -30,6 +40,8 @@ enum ScreensEnum {
     SCREEN_ID_MAIN = 1,
     SCREEN_ID_SCREEN00 = 2,
     SCREEN_ID_SCREEN01 = 3,
+    SCREEN_ID_SCREEN02 = 4,
+    SCREEN_ID_SCREEN03 = 5,
 };
 
 void create_screen_main();
@@ -40,6 +52,12 @@ void tick_screen_screen00();
 
 void create_screen_screen01();
 void tick_screen_screen01();
+
+void create_screen_screen02();
+void tick_screen_screen02();
+
+void create_screen_screen03();
+void tick_screen_screen03();
 
 void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);

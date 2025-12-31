@@ -132,7 +132,16 @@ void loop()
             int32_t angle = lv_arc_get_value(objects.screen01_arc_pwm);
             Serial.printf("Arc PWM Value: %3d\n", angle);
             lv_label_set_text(objects.screen01_label_pwm_value, "%d", angle);
-         }
+         }else if(obj == objects.screen02_btn_back_2) {
+            lv_scr_load(objects.screen01);
+    }else if(obj == objects.screen02_btn_next_2) {
+            lv_scr_load(objects.screen03);
+        }
     }
+
+    // if(objects.screen03_testarea) {
+    //     const char *txt = lv_textarea_get_text(objects.screen03_testarea);
+    //     Serial.printf("Textarea content: %s\n", txt);
+    // }
 }
 
